@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css?family=Cabin|Herr+Von+Muellerhoff|source+Sans+Pro:400,900&display=swap');
+/* global styles*/
+*,
+*::before,
+*::after{
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+	
+}
+:root {
+	--main-font:'Source Sans Pro', sans-Serif;
+	--secondary-font:'Herr Von Mullerhoff',cursive;
+	--body-font:'Cabin',sans-serif;
+	--main-font-color-dark:#252525;
+	--secondary-font-color:#c59d5f;
+	
+}
+
+
+
+
+*{
+	margin:0;
+	padding:0;
+	font-family:'Josefin Sans',Sans-serif;
+	
+}
+
+
+.slider{
+	background-color:#ececfa;
+	background-size: cover;
+	
+	overflow:hidden;
+	margin-top:7vh;
+}
+.slider .slides{
+	width:200vw;
+	height:82vh;
+	background-size: cover;
+	display:flex;
+}
+.slide1{
+	width:68vw;
+	height:82vh;
+	background-size: cover;
+	
+}
+.slide1 .img1{
+	width:100vw;
+	height:86vh;
+	display:inline-block;
+	margin-top:4%;
+	
+}
+.slide1 .img2{
+	width:100vw;
+	height:82vh;
+	
+}
+.slide1 .img3{
+	width:100vw;
+	height:82vh;
+}
+.constant{
+	
+	position:absolute;
+	width:26vw;
+	height:52vh;
+	margin-left:36vw;
+}
+.constant .h1{
+	margin-top:10vh;
+	color:#19e5e5;
+}
+.constant p{
+	font-family:'Pacifico';
+	margin-top:3vh;
+	margin-bottom:3vh;
+}
+.constant .btn{
+	padding:4%;
+	color:white;
+	background-color:#313030;
+	border-radius:10px;
+}
+
+
+
