@@ -132,7 +132,11 @@ public class SalesController {
 				catch(NullPointerException e) {
 					today=0.0f;
 				}
-						mv.addObject("today", today);		
+						mv.addObject("today", today);	
+						
+						
+		String userName = SecurityContextHolder.getContext().getAuthentication().getName().toString();
+		mv.addObject("userName", userName);
 					 
 	  return mv;
 	}
@@ -177,7 +181,8 @@ public class SalesController {
 		model.addAttribute("inPPA",inppa);
 		///
 				
-				
+		String userName = SecurityContextHolder.getContext().getAuthentication().getName().toString();
+		model.addAttribute("userName", userName);		
 					 
 	  return "reports/todaySales";
 	}
