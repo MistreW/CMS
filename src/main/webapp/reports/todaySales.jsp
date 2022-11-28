@@ -13,6 +13,10 @@
  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedheader/3.1.7/css/fixedHeader.dataTables.min.css"/>
  
  <script src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
+ <style type ="text/css">
+ table tfoot {
+ display: table-row-group; }
+ </style>
  </head>
  <body>
 <div class="container-fluid">
@@ -22,6 +26,8 @@
 		<div class="col-md-2"><label>MoF: ${inMOF} Birr</label></div>
 		<div class="col-md-2"><label>PPA: ${inPPA} Birr</label></div>
 	</div>
+	
+	<div class="UserNameDiv" id="userNameId" align="right"><label>System user:${userName}</label></div>
 
 	<div class="panel panel-primary">
 					<table class="table table-striped table-advance table-bordered table-hover txt1" id="datatable"  >
@@ -50,6 +56,18 @@
 					</c:forEach>
         </tbody>
         
+        <tfoot>
+        <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th>Grand Total</th>
+        <th></th>
+        </tr>
+        </tfoot>
+        
        </table>
 	</div>
 </div>
@@ -66,14 +84,55 @@
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.print.min.js"></script>
 
 <script>
+var currentdate = new Date();
 $(document).ready(function() {
-    $('#datatable').DataTable( {
-    	"iDisplayLength": 30,
-        dom: 'Bfrtip',
-        buttons: [
-            'excel', 'pdf', 'print'
-        ]
-        } );
+    $('#datatable').DataTable( 
+        {
+            footerCallback: function (row, data, start, end, display) {
+                var api = this.api();
+     
+                // Remove the formatting to get integer data for summation
+                var intVal = function (i) {
+                    return typeof i === 'string' ? i.replace(/[\$,]/g, '') * 1 : typeof i === 'number' ? i : 0;
+                };
+     
+                // Total over all pages
+                total = api
+                    .column(6)
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+     
+                     
+                // Update footer
+                $(api.column(6).footer()).html( ' ( ' + total + ' Birr)');
+            },
+       
+        	"iDisplayLength": 30,
+            dom: 'Bfrtip',
+            buttons: [ {
+            	extend: 'excel',
+                title: 'Today Sales',
+                footer: true,
+
+            },
+            	 {
+            	
+            	extend: 'print',
+                title: 'Today Sales',
+                footer: true,
+                messageTop: (currentdate.getDate() + "/" + (currentdate.getMonth()+1) + "/" + currentdate.getFullYear()),
+                customize: function(win) {
+                	$(win.document.body).prepend($("#userNameId"));
+                	$(win.document.body).find('h1').css('text-align', 'center');
+                	
+                }
+                
+            }
+            ],	
+       } 
+    );
 } );
 </script>
 
