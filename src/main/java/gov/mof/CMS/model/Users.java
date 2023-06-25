@@ -1,5 +1,8 @@
 package gov.mof.CMS.model;
 
+import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +17,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Users {
+private static final long PASSWORD_EXPIRATION_TIME= 30L * 24L * 60L * 60L * 1000L;  
 	
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +34,8 @@ private Integer roleId;
 
 private String position;
 private String password;
+@Column(name = "password_changed_time")
+private Date passwordChangedTime;
 
 private Boolean isActive;
 
@@ -75,6 +81,14 @@ public String getPassword() {
 public void setPassword(String password) {
 	this.password = password;
 }
+
+public void setPasswordChangedTime(Date time){
+	this.passwordChangedTime=time;
+}
+public Date getPasswordChangedTime(){
+	return passwordChangedTime;
+}
+
 public String getUserName() {
 	return userName;
 }
@@ -86,6 +100,17 @@ public Boolean getIsActive() {
 }
 public void setIsActive(Boolean isActive) {
 	this.isActive = isActive;
+}
+
+
+
+public boolean isPasswordExpired() {
+	if (this.passwordChangedTime == null) return false;
+	 
+	long currentTime = System.currentTimeMillis();
+	long lastChangedTime = this.passwordChangedTime.getTime();
+	 
+	return currentTime > lastChangedTime + PASSWORD_EXPIRATION_TIME;
 }
 @Override
 public String toString() {

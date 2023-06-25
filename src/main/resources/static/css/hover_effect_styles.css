@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+body{ 
+    font-family: 'Poppins'; 
+}
+
+h1{ 
+    color: white; 
+}
+
+.Purple_and_Blue_Grad_Classifiacation{
+    border: 1px white; 
+    width: 100px; 
+}

@@ -12,7 +12,8 @@ body {
 
 .navbar {
 	background: #6ab446;
-}
+	/* background: #8b76a5;  */
+} 
 
 .nav-link,
 .navbar-brand {
@@ -113,6 +114,7 @@ body {
 
 .features .btn {
 	background-color: #589b37;
+	/* background-color: #7851e4; */
 	border: 1px solid #589b37;
 	color: #fff;
 	margin-top: 20px;

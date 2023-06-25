@@ -31,7 +31,7 @@ public class MyUserDetails implements UserDetails {
 	}
 
 	@Override
-	public String getUsername() {
+	public String  getUsername() {
 		return user.getUserName();
 	}
 
@@ -55,6 +55,8 @@ public class MyUserDetails implements UserDetails {
 		return user.getIsActive();
 	}
 	
-	
+	public Users getUser(){
+		return user;
+	}
 
 }

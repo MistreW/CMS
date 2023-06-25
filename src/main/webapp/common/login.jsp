@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+   <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,11 +37,13 @@
 	<div class="limiter ">
 		<div class="container-login100 ">
 			<div class="wrap-login100 border border-success">
-			
-	 	
-				<form action="/login" method="post">
-				
-					<span class="login100-form-title p-b-26">
+				<c:if test= "${loginLocked}">
+							<div class="col-md-6 border rounded-bottom border-dark p-3">
+								<div  class="alert alert-danger">Account locked due to multiple incorrect login attempts.</div>
+							</div>
+                         </c:if>
+			<form action="/login" method="post">
+				<span class="login100-form-title p-b-26">
 						Welcome To CMS
 					</span>
 					<span class="login100-form-title p-b-48">
@@ -70,12 +73,16 @@
 							</button>
 						
 						</div>
-					</div>
+
+						
+						 
 						<div align="center" style="color:red">${SPRING_SECURITY_LAST_EXCEPTION.message}</div>
+						
 				
 				</form>
 				
 			</div>
+			
 			
 		</div>
 	</div>

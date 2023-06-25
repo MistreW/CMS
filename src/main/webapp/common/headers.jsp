@@ -19,14 +19,26 @@
 
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css"
 	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/style2.css"
-	rel="stylesheet">
+<!-- <link href="${pageContext.request.contextPath}/css/style2.css"
+	rel="stylesheet"> -->
+
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" href="../../resources/static/css/hover_effect_styles.css" type="text/css">
 
 <!-- bootstrap 5.2. not working with previous version on modal  
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+
+
+
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-expand-md navbar-fixed-top bg-success">
+
+
+	<nav class="navbar navbar-expand-lg navbar-expand-md navbar-fixed-top"  style="background-color: #2D2D2D";>
+
+
+	
+
 		<div class="container-fluid">
 		 <div  > <!-- class="col-md-1 col-sm-1" -->
 			<a class="navbar-brand"> <img src="img/cafe.ico" alt="" 
@@ -34,20 +46,22 @@
 				
 			</a>
 			
-			
+			<div><img alt="" src="img/purple_and_blue_grad_classifier_image.png" class="image"></div>
+
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 		          <span class="icon-bar"></span>
 		          <span class="icon-bar"></span>
 		          <span class="icon-bar"></span>                        
 		      </button>
 	     </div>   
+	
 		
 		<div class="collapse navbar-collapse" id="myNavbar">
 		 <div class="col-md-9 col-lg-10 col-sm-9">
 				<ul class="navbar-nav me-auto justify-content-left">
-					<li class="nav-item"><a class="nav-link"
-						 href="/home">Dashboard</a></li>
-						 
+					<li class="nav-item" class="dashboard-title"><a class="nav-link"
+						 href="/home">D A S H B O A R D</a></li>
+				
 				<sec:authorize access="hasRole('CASHERMOF') or hasRole('CASHERPPA') or hasRole('CMANAGER')">		 
 					<li class="nav-item "><a class="nav-link"
 						 href="/sales">Sales</a></li>

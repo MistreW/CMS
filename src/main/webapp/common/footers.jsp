@@ -10,12 +10,13 @@
 <!-- Bootstrap core CSS -->
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/style2.css" rel="stylesheet">
+    <link href="../../resources/static/css/dashboard.css">
 </head>
 <body>
 
 
 <div Class="fixed-bottom">
-<footer id="footer">
+<footer id="footer" style="background-color: #D9D9D9" style="color: #fffbfb">
          <p class="txt2">© 2022 MoF All Right Reserved</p>
  </footer>
     </div>
@@ -25,4 +26,4 @@
     <script src="${pageContext.request.contextPath}/https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 </body>
-</html>
+</html>s

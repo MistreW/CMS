@@ -1,4 +1,5 @@
 package gov.mof.CMS.controller;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -117,6 +118,7 @@ public class UserController {
 		 }
 		Users us=userRepo.findByUserName(userName);
 		us.setPassword(pass.encode(password));
+		us.setPasswordChangedTime(new Date());
 		userRepo.save(us);
 		return "redirect:/changePassword";
 		}
